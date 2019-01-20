@@ -20,7 +20,7 @@ class LineNumbersWindow(Window):
 		self.window.erase()
 		totalLines = len(self.manager.Windows["fileWindow"].fileLines)
 		self.intendedWidth = len(str(totalLines))+2
-		self.manager.Windows["fileWindow"].intendedX = len(str(len(self.manager.Windows["fileWindow"].fileLines)))+1
+		self.manager.Windows["fileWindow"].intendedX = len(str(totalLines))+1
 		self.manager.Windows["fileWindow"].keepWindowInMainScreen()
 		self.manager.Windows["fileWindow"].update()
 		self.intendedX = self.manager.Windows["fileWindow"].window.getbegyx()[1] - self.intendedWidth+1
