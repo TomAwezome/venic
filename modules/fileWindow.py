@@ -164,7 +164,8 @@ class FileWindow(Window):
 		linesRow = 0
 		for line in self.fileLines:
 			fileString += line+"\n"
-		self.manager.Windows["magicBar"].save()
+		if self.manager.Windows["magicBar"].save() == -1:
+			return
 		self.file.save(fileString)
 	#	fileString = fileString[:-1]
 		# file.write(fileString)

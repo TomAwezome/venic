@@ -570,7 +570,7 @@ class MagicBar(Window):
 				break
 		if kill == True:
 			self.window.erase()
-			return
+			return -1
 	## savefile string
 	# keypress loop: begin catching characters
 		self.window.erase()
@@ -583,6 +583,7 @@ class MagicBar(Window):
 			try:
 				c = self.manager.stdscr.getch()
 			except KeyboardInterrupt:
+				kill = True
 				break
 			if c == -1:
 				continue
@@ -618,6 +619,9 @@ class MagicBar(Window):
 			if self.searchCursorX <= self.window.getmaxyx()[1]-2 and self.searchCursorX >= 0:
 				self.window.chgat(0,self.searchCursorX, 1, self.manager.curses.color_pair(2) | self.manager.curses.A_REVERSE)
 			self.manager.update()
+		if kill == True:
+			self.window.erase()
+			return -1
 		self.manager.Windows["fileWindow"].file.source = self.saveString
 
 	def terminate(self):
